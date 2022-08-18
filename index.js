@@ -2,8 +2,8 @@ const express = require("express");
 // require("dotenv").config();
 const web3Service = require("./service/web3.service");
 const imageService = require("./service/image.service");
-const Telegraf = require('telegraf');
-const bot = new Telegraf(process.env.TELEGRAM_BOT);
+// const Telegraf = require('telegraf');
+// const bot = new Telegraf(process.env.TELEGRAM_BOT);
 
 const app = express();
 const { PORT } = process.env || 8080;
@@ -86,11 +86,11 @@ app.use(
   })
 );
 
-bot.command('start', ctx => {
-  console.log(ctx.from)
-  bot.telegram.sendMessage(ctx.chat.id, 'hello there! Welcome to my new telegram bot.', {
-  })
-});
+// bot.command('start', ctx => {
+//   console.log(ctx.from)
+//   bot.telegram.sendMessage(ctx.chat.id, 'hello there! Welcome to my new telegram bot.', {
+//   })
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
