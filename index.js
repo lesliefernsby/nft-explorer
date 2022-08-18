@@ -26,23 +26,27 @@ const RootQuery = new GraphQLObjectType({
         id: { type: GraphQLInt },
       },
       async resolve(parent, args) {
-        const data = await web3Service.getMetaData(args.address, args.id);
-        const imageUrl = `https://ipfs.io/ipfs/${data.image.slice(7)}`;
-        const imageMetadata = await imageService.getImageMetadata(imageUrl);
-        const { width, height } = imageMetadata;
+        try {
+          const data = await web3Service.getMetaData(args.address, args.id);
+          const imageUrl = `https://ipfs.io/ipfs/${data.image.slice(7)}`;
+          const imageMetadata = await imageService.getImageMetadata(imageUrl);
+          const { width, height } = imageMetadata;
 
-        let response = {
-          name: data.name,
-          description: data.description,
-          image: {
-            imageUrl,
-            width,
-            height,
-          },
-          externalUrl: data.external_url,
-          attributes: data.attributes,
-        };
-        return response;
+          let response = {
+            name: data.name,
+            description: data.description,
+            image: {
+              imageUrl,
+              width,
+              height,
+            },
+            externalUrl: data.external_url,
+            attributes: data.attributes,
+          };
+          return response;
+        } catch (e) {
+          return { message: e.message, code: e.code };
+        }
       },
     },
   },
