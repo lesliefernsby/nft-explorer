@@ -26,12 +26,13 @@ async function getMetaData(image) {
   });
   await client.connect();
   const data = await client.get(image);
+  if (data === null) return null;
 
-  if (data !== null) data = await JSON.parse(data);
+  const response = await JSON.parse(data);
 
   client.disconnect();
 
-  return data;
+  return response;
 }
 
 module.exports = { storeData, getMetaData };
