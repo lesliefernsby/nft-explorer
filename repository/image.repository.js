@@ -1,5 +1,5 @@
 const { createClient } = require("redis");
-require("dotenv").config({ path: "../.env" });
+// require("dotenv").config({ path: "../.env" });
 
 async function storeData(image, data) {
   const client = createClient({

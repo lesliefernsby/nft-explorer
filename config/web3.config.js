@@ -1,5 +1,5 @@
 const Web3 = require("web3");
-require("dotenv").config({ path: "../.env" });
+// require("dotenv").config({ path: "../.env" });
 
 const { BLOCKCHAIN_PROVIDER } = process.env;
 

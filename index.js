@@ -1,5 +1,5 @@
 const express = require("express");
-require("dotenv").config();
+// require("dotenv").config();
 const web3Service = require("./service/web3.service");
 const imageService = require("./service/image.service");
 
