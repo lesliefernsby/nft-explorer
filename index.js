@@ -78,6 +78,9 @@ app.use(
   graphqlHTTP({
     schema,
     graphiql: true,
+    formatError: (err) => {
+      return { code: err.code, message: err.message };
+    },
   })
 );
 
