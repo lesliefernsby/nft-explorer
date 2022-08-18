@@ -25,7 +25,9 @@ async function getMetaData(image) {
     password: process.env.REDIS_PASSWORD,
   });
   await client.connect();
-  const data = await JSON.parse(await client.get(image));
+  const data = await client.get(image);
+
+  if (data !== null) data = await JSON.parse(data);
 
   client.disconnect();
 
