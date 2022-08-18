@@ -3,7 +3,7 @@ const axios = require("axios");
 const imageRepository = require("../repository/image.repository");
 
 async function getImageMetadata(imageUrl) {
-  const storedMetaData = imageRepository.getMetaData(imageUrl);
+  const storedMetaData = await imageRepository.getMetaData(imageUrl);
 
   if (storedMetaData !== null) return storedMetaData;
 
